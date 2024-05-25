@@ -21,7 +21,19 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app-imports": ["./src/app/imports.ts"],
+      "@constants": ["./src/constants.ts"],
+      "@utils": ["./src/utils.ts"],
+      "@services": ["./src/app/services"],
+      "@services/*": ["./src/app/services/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@models/*": ["./src/app/models/*"],
+      "@shared": ["./src/app/shared"],
+      "@styles": ["./src/app/style-vars.ts"],
+      "@stylevars": ["./src/variables.scss"],
+    },
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
