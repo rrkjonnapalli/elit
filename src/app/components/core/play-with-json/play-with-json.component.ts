@@ -7,7 +7,8 @@ import _ from 'lodash';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SnackbarService } from '@services/shared/snackbar/snackbar.service';
-import { EditorText } from '@models/core-models';
+import { EditorText, TApp } from '@models/core-models';
+import { Router } from '@angular/router';
 const DEFAULT_SPACES = 2;
 
 @Component({
@@ -25,9 +26,13 @@ export class PlayWithJsonComponent {
   data1!: EditorText;
   data2!: EditorText;
   spaces = DEFAULT_SPACES;
+  home = {name: 'Home', path: ['apps']};
 
-  constructor(private log: LoggerService, private _snackbar: SnackbarService) { }
+  constructor(private log: LoggerService, private _snackbar: SnackbarService, private router: Router) { }
 
+  gotoHome = () => {
+    this.router.navigate(this.home.path);
+  }
   format = () => {
     const data = this.__getTextFromEditor(this.data1);
     this._setNextEditor(data);

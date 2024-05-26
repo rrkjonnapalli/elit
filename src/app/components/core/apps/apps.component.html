@@ -1,1 +1,6 @@
-<h2>Apps</h2>
+<div class="apps-list">
+  <h2 class="w-100 text-center">Apps</h2>
+  @for (app of apps; track $index) {
+  <button mat-raised-button color="primary" (click)="gotoPath(app)">{{app.name}}</button>
+  }
+</div>
