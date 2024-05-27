@@ -64,9 +64,12 @@ export class PlayWithJsonComponent {
     }
   }
 
-  __getTextFromEditor = (data: EditorText) => {
+  __getTextFromEditor = (data: EditorText, plain = false) => {
     const text = _.get(data, 'text', []);
     const updatedStr = text.join('\n');
+    if (plain) {
+      return updatedStr;
+    }
     const val = JSON.parse(updatedStr);
     return val;
   }
@@ -77,9 +80,11 @@ export class PlayWithJsonComponent {
   }
 
   unescape = () => {
-    const jsonString = this.__getTextFromEditor(this.data1);
+    let jsonString = this.__getTextFromEditor(this.data1, true);
+    jsonString = `"${jsonString}"`;
+    const dataStr = JSON.parse(jsonString);
     this.log.info('Unescape successfull, parsing data to json');
-    const data = JSON.parse(jsonString);
+    const data = JSON.parse(dataStr);
     this._setNextEditor(data);
   }
 
