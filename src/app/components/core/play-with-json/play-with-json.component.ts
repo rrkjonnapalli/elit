@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { SnackbarService } from '@services/shared/snackbar/snackbar.service';
 import { EditorText, TApp } from '@models/core-models';
 import { Router } from '@angular/router';
+import { sortJSON } from '@services/shared/jsondiff';
 const DEFAULT_SPACES = 2;
 
 @Component({
@@ -106,7 +107,7 @@ export class PlayWithJsonComponent {
 
   sortIt = () => {
     const data = this.__getTextFromEditor(this.data1);
-    const sortedValue = this.dataSort(data);
+    const sortedValue = sortJSON(data);
     this._setNextEditor(sortedValue);
   }
 
