@@ -6,8 +6,8 @@
     "start": "ng serve --host=0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "gh": "ng build --configuration=production --base-href https://rrkjonnapalli.github.io/elit/",
-    "ngh": "ngh --dir=dist/elit/browser",
+    "gh-build": "ng build --configuration=production --base-href https://rrkjonnapalli.github.io/elit/",
+    "gh-deploy": "ngh --dir=dist/elit/browser",
     "test": "ng test"
   },
   "private": true,

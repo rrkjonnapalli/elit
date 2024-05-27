@@ -1,5 +1,16 @@
 # Elit
 
+# GH Pages deploy
+```
+
+git checkout main
+git branch -D gh-pages
+git checkout -b gh-pages
+npm run gh-build
+npm run gh-deploy
+
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
 ## Development server
