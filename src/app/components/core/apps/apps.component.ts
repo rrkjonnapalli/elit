@@ -12,8 +12,9 @@ import { TApp } from '@models/core-models';
 })
 export class AppsComponent {
   apps: TApp[] = [
-    {name: 'JSON Play', path: ['jsonplay']},
+    {name: 'JSON Formatter', path: ['jsonplay']},
     {name: 'Dates & Times', path: ['time']},
+    {name: 'JSON Diff', path: ['jsondiff']}
   ]
   constructor(private router: Router) { }
 

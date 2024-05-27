@@ -22,10 +22,5 @@ import { CmEditorComponent } from './components/shared/cm-editor/cm-editor.compo
 })
 export class AppComponent {
   title = 'elit';
-  msg = "";
-
-  onSubmit = () => {
-    console.log(this.msg);
-  }
 
 }

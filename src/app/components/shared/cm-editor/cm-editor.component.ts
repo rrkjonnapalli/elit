@@ -96,7 +96,11 @@ export class CmEditorComponent implements AfterViewInit, ControlValueAccessor {
         ...stateExt,
         EditorView.updateListener.of((update) => {
           if (update.docChanged) {
-            const text = _.get(update.state.doc, 'text', []);
+            let text: any = _.get(update.state.doc, 'text', []);
+            if (!text.length) {
+              const children = _.get(update.state.doc, 'children', [])?.map((e: any) => _.get(e, 'text', []));
+              text = _.flatten(children);
+            }
             this.onChanged({
               text: text,
               dom: this.view.contentDOM
@@ -107,7 +111,6 @@ export class CmEditorComponent implements AfterViewInit, ControlValueAccessor {
           {
             key: 'Ctrl-Enter Cmd-Enter',
             run: (e: any) => {
-              console.log('event', e);
               this.submit();
               return true;
             }

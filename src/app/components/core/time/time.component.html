@@ -1,5 +1,10 @@
 <div>
 
+  @if (isLoading) {
+  <div class="split">
+    <h3>Loading, Please wait</h3>
+  </div>
+  } @else {
   <div class="split">
     <div class="split mb-5 mt-5">
       <button mat-raised-button color="primary" (click)="gotoHome()">Go Home</button>
@@ -31,8 +36,6 @@
               {{ time.timeZone }} - {{ time.abbr }}
             </mat-card-title>
             <mat-icon class="btn" (click)="pinZone(time, false)" matTooltip="Remove Zone">close</mat-icon>
-            <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-            <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" > -->
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
@@ -71,6 +74,7 @@
       }
     </div>
   </div>
+  }
 
 
 </div>

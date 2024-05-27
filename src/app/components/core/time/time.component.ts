@@ -38,8 +38,9 @@ import { Router } from '@angular/router';
   styleUrl: './time.component.scss'
 })
 export class TimeComponent implements OnInit {
-  zones = zones;
+  zones = zones();
   times: ITime[] = [];
+  isLoading = true;
   time = new Date();
   filteredTimes = this.times;
   timezone = new FormControl('');
@@ -66,6 +67,7 @@ export class TimeComponent implements OnInit {
     setInterval(() => {
       this.time = new Date();
       this.generateTimes();
+      this.isLoading = false;
     }, 1000);
     this.timezone.valueChanges.pipe(
       debounceTime(500),
@@ -73,7 +75,6 @@ export class TimeComponent implements OnInit {
     ).subscribe({
       next: (val) => {
         val = val || '';
-        this.log.info(`Value changed`, val);
         this.filteredTimes = this.getFilteredValues(val);
       }
     })
@@ -116,7 +117,7 @@ export class TimeComponent implements OnInit {
   }
 
   generateTimes() {
-    this.times = zones.map(({ zone: timeZone, abbr }) => {
+    this.times = this.zones.map(({ zone: timeZone, abbr }) => {
       return {
         timeZone,
         abbr,

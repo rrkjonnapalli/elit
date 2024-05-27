@@ -3,6 +3,7 @@ import { PlayWithJsonComponent } from './components/core/play-with-json/play-wit
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { AppsComponent } from './components/core/apps/apps.component';
 import { TimeComponent } from './components/core/time/time.component';
+import { JsonDiffComponent } from './components/core/json-diff/json-diff.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,10 @@ export const routes: Routes = [
   {
     path: 'jsonplay',
     component: PlayWithJsonComponent
+  },
+  {
+    path: 'jsondiff',
+    component: JsonDiffComponent
   },
   {
     path: 'time',

@@ -1,0 +1,40 @@
+<div class="m-auto">
+  <div class="split">
+    <div class="pg-header">
+      <h1>JSON Diff</h1>
+      <div class="split">
+        <div class="cl"></div>
+        <div class="cc">
+          <div class="btn-group">
+            <button mat-raised-button color="primary" (click)="gotoHome()">Go Home</button>
+            <button mat-raised-button color="primary" (click)="jsondiff()">JSON Diff</button>
+          </div>
+        </div>
+        <div class="cr"></div>
+      </div>
+    </div>
+    <div class="split-1">
+      <app-cm-editor-input name="msg" [(ngModel)]="data1" class="overflow-auto w-100"
+        [focus]="true"></app-cm-editor-input>
+    </div>
+    <div class="split-2">
+      <app-cm-editor-input name="msg" [(ngModel)]="data2" class="overflow-auto w-100"></app-cm-editor-input>
+    </div>
+
+  </div>
+  @if (differences && differences.length) {
+  <div class="split">
+    <mat-list role="list">
+      <div mat-subheader>Changes ({{differences.length}})</div>
+      @for (item of differences; track $index) {
+      <mat-list-item role="listitem">
+        <span [ngClass]="getDiffStyle(item)">
+        {{item.type}} at {{item.position}}
+        </span>
+      </mat-list-item>
+      }
+    </mat-list>
+  </div>
+  }
+
+</div>
